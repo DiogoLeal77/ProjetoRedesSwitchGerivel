@@ -54,6 +54,3 @@ serviços de rede, acessíveis a partir de qualquer ponto da rede:
 - Virtualização com VirtualBox
 - Serviços em Docker
 - Documentação técnica e histórico de progresso versionado
-
-## Estrutura do repositório
-
