@@ -5,13 +5,13 @@ Projeto pessoal de redes e virtualização — switch gerível Zyxel GS1200-5 + 
 ## A ideia do projeto
 
 A rede doméstica original é composta por dois switches não-geríveis. Isto
-significa que todos os dispositivos partilham o mesmo domínio de broadcast e
-não existe qualquer controlo sobre o tráfego: não há segmentação, não há
-priorização, não há visibilidade.
+significa que todos os dispositivos partilham a mesma rede e não existe
+qualquer controlo sobre o tráfego: não há segmentação, não há priorização,
+não há visibilidade.
 
-Um switch não-gerível faz o básico — encaminha tramas de umas portas para as
-outras. Toda a lógica que existe por trás de uma rede empresarial — VLANs,
-espelhamento de tráfego, priorização, agregação de links — fica escondida
+Um switch não-gerível faz o básico — liga dispositivos entre si, e pronto.
+Toda a lógica que existe por trás de uma rede empresarial — VLANs,
+espelhamento de tráfego, priorização, agregação de ligações — fica escondida
 atrás de equipamento que não tem interface de gestão. Não se aprende a
 configurar aquilo que não se pode configurar.
 
@@ -34,7 +34,7 @@ distinguem de um switch não-gerível:
 - Segmentação com VLANs — isolar dispositivos na mesma rede física
 - Port mirroring — duplicar tráfego para análise com Wireshark
 - QoS — priorizar ou limitar largura de banda por porta
-- Link aggregation (opcional) — agregar dois links num só
+- Link aggregation (opcional) — agregar duas ligações numa só
 - IGMP snooping (opcional) — controlar tráfego multicast
 
 ### Fase 2 — Servidor virtualizado
@@ -42,17 +42,18 @@ distinguem de um switch não-gerível:
 Correr uma máquina virtual Ubuntu Server num PC, com Docker a alojar três
 serviços de rede, acessíveis a partir de qualquer ponto da rede:
 
-- **phpIPAM** — gestão de endereçamento IP
-- **NetBox** — documentação de infraestrutura de rede
+- **phpIPAM** — gestão de endereçamentos IP's
+- **NetBox** — documentação da infraestrutura de rede
 - **Zabbix** — monitorização e alertas
 
 ## O que este projeto demonstra
 
 - Configuração de switch gerível (VLANs, mirroring, QoS, LAG, IGMP)
 - Análise de tráfego com Wireshark
-- Medição de throughput com iperf3
+- Medição de débito com iperf3
 - Virtualização com VirtualBox
 - Serviços em Docker
 - Documentação técnica e histórico de progresso versionado
 
 ## Estrutura do repositório
+
