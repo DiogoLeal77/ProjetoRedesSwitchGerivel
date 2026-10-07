@@ -2,8 +2,7 @@
 
 
 
-\## Zyxel GS1200-5 — switch gerido
-
+\## Zyxel GS1200-5 — switch gerível
 
 
 O Zyxel GS1200-5 foi escolhido precisamente por ser gerível. Um switch
