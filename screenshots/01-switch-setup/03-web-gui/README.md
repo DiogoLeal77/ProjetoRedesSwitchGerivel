@@ -5,6 +5,22 @@ separadores, cada um responsável por uma área distinta de configuração ou
 consulta. Abaixo está o que cada um permite fazer, com o respetivo
 screenshot.
 
+
+## Configuração aplicada
+
+Na fase inicial, o switch foi configurado com:
+
+- **IP de gestão fixo** — atribuído manualmente, fora da gama DHCP do router, para nunca mudar. Um IP curto e memorável para acesso rápido pela interface web.
+- **Gateway** — definido para o endereço do router da rede doméstica, para que o switch consiga comunicar fora da rede local (sincronização de hora, atualizações de firmware, monitorização futura via SNMP).
+- **DHCP Client** — desativado, para garantir que o IP não é alterado automaticamente pelo router.
+
+Esta configuração garante que a interface web do switch está sempre acessível no mesmo endereço, independentemente de reinícios do router ou de alterações na rede.
+
+## Ver também
+
+- O separador **System** mostra o estado atual do endereço de gestão.
+- O separador **Management** é onde estas definições são configuradas.
+
 ## System
 
 Informação geral do equipamento — modelo, firmware, uptime, endereço de
