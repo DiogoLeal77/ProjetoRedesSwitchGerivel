@@ -9,7 +9,7 @@
 | Portas | 5× Gigabit Ethernet (RJ45) |
 | Funções principais | VLANs, port mirroring, QoS, link aggregation, IGMP snooping |
 | Papel no projeto | Switch central dos testes de segmentação e análise de tráfego |
-| Posição na rede | Entre o Switch 2 e o Portátil 1 |
+| Posição na rede | Entre o Switch 2 e os clientes de teste |
 
 ### Fotos
 
@@ -38,9 +38,25 @@ simplesmente não suporta:
 ### Onde fica ligado
 
 O Zyxel não substitui nenhum dos switches existentes — é inserido
-**a seguir ao Switch 2**, entre este e o Portátil 1, sem alterar o Switch 1
-nem a rede doméstica principal.
+**a seguir ao Switch 2**, entre este e os clientes de teste, sem alterar o
+Switch 1 nem a rede doméstica principal.
 
 - **Porta 1 do Zyxel** → ligada ao Switch 2 (para cima)
-- **Porta 2 do Zyxel** → ligada ao Portátil 1
+- **Porta 2 do Zyxel** → ligada ao cliente de teste principal
 - **Portas 3–5 do Zyxel** → livres
+
+## Clientes de teste
+
+Para os testes que exigem dois dispositivos ligados ao switch gerível
+(segmentação VLAN, mirroring, QoS), o projeto usa dois PCs adicionais.
+
+### PC adicional
+
+![PC adicional](03-pc-adicional.png)
+
+### Dois PCs lado a lado
+
+Os dois PCs ligados ao switch gerível, prontos para os testes de
+segmentação.
+
+![Dois PCs lado a lado](04-pcs-lado-a-lado.png)
