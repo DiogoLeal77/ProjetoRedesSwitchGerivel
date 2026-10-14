@@ -1,18 +1,16 @@
 # Teste de conectividade base
 
-Antes de qualquer segmentação, foi confirmado que toda a rede está
-visível e que cada dispositivo tem endereçamento atribuído pelo router.
-Este é o ponto de referência contra o qual os testes seguintes (VLANs,
+Antes de qualquer segmentação, foi confirmado que os dois PCs de teste
+têm conectividade entre si e endereçamento atribuído pelo router. Este é
+o ponto de referência contra o qual os testes seguintes (VLANs,
 mirroring, QoS) vão ser comparados.
 
 ## Varredura da rede
-fiz
-O Advanced IP Scanner lista todos os dispositivos vivos da rede — o PC
-fixo, os dois portáteis de teste, o switch gerível, o router, e os
-restantes dispositivos domésticos. Confirma que a rede antiga e a nova
-continuam a ser um único segmento alcançável.
 
-![Scanner completo](05-scanner-rede.png)
+O Advanced IP Scanner confirma que os dois PCs de teste — `.113` e `.163`
+— estão vivos e alcançáveis na mesma rede.
+
+![Scanner de rede](05-scanner-rede.png)
 
 ## Endereçamento dos PCs
 
@@ -29,11 +27,10 @@ segmentação ativa.
 
 ![ipconfig PC 2](07-ipconfig-pc2.png)
 
-## Nota
+## Nota sobre o ping
 
 Os testes de ping entre dispositivos Windows não devolvem resposta
 devido à configuração padrão do Windows Defender Firewall, que bloqueia
 pedidos ICMP de entrada. Esta é uma limitação do sistema operativo, não
-da rede — o Advanced IP Scanner e o endereçamento DHCP confirmam que
-todos os dispositivos são alcançáveis ao nível da camada 2.
-
+da rede — o Advanced IP Scanner e o endereçamento DHCP confirmam que os
+dois PCs são alcançáveis ao nível da camada 2.
