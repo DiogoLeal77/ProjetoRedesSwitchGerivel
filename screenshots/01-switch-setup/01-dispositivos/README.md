@@ -42,8 +42,8 @@ O Zyxel não substitui nenhum dos switches existentes — é inserido
 Switch 1 nem a rede doméstica principal.
 
 - **Porta 1 do Zyxel** → ligada ao Switch 2 (para cima)
-- **Porta 2 do Zyxel** → ligada ao cliente de teste principal
-- **Porta 3 do Zyxel** → ligada ao cliente 2 de teste principal
+- **Porta 2 do Zyxel** → ligada ao portatil 1 de teste principal
+- **Porta 3 do Zyxel** → ligada ao portatil 2 de teste principal
 - **Portas 4–5 do Zyxel** → livres
 
 ## Clientes de teste
