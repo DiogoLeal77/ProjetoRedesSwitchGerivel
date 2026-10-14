@@ -32,10 +32,18 @@ os outros dispositivos da casa.
 
 ## Fotos
 
-**Switch gerível ligado** — ligação ao Switch 2.
+**Cablagem física** — o switch gerível ligado ao Switch 2.
 
 ![Cablagem física](01-cablagem-fisica.png)
 
-**Portátil 1 ligado** — cliente de teste principal ligado ao switch gerível.
+**Portátil 1** — cliente de teste principal (ver também em [Dispositivos](../01-dispositivos/03-portatil-1.png)).
 
-![Portátil ligado](02-portatil-ligado.png)
+![Portátil 1](../01-dispositivos/03-portatil-1.png)
+
+**Portátil 2** — cliente de teste secundário (ver também em [Dispositivos](../01-dispositivos/04-portatil-2.png)).
+
+![Portátil 2](../01-dispositivos/04-portatil-2.png)
+
+**Vista geral** — os dois portáteis ligados ao switch gerível (ver também em [Dispositivos](../01-dispositivos/05-portateis-lado-a-lado.png)).
+
+![Vista geral](../01-dispositivos/05-portateis-lado-a-lado.png)
