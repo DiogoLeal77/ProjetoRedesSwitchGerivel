@@ -48,15 +48,19 @@ Switch 1 nem a rede doméstica principal.
 ## Clientes de teste
 
 Para os testes que exigem dois dispositivos ligados ao switch gerível
-(segmentação VLAN, mirroring, QoS), o projeto usa dois PCs adicionais.
+(segmentação VLAN, mirroring, QoS), o projeto usa dois portáteis.
 
-### PC adicional
+### Portátil 1
 
-![PC adicional](03-pc-adicional.png)
+![Portátil 1](03-portatil-1.png)
 
-### Dois PCs lado a lado
+### Portátil 2
 
-Os dois PCs ligados ao switch gerível, prontos para os testes de
+![Portátil 2](04-portatil-2.png)
+
+### Os dois portáteis lado a lado
+
+Os dois portáteis que vão servir de clientes de teste nos ensaios de
 segmentação.
 
-![Dois PCs lado a lado](04-pcs-lado-a-lado.png)
+![Portáteis lado a lado](05-portateis-lado-a-lado.png)
