@@ -1,4 +1,3 @@
-
 # Acesso mútuo entre portáteis na mesma VLAN
 
 Teste complementar: os dois portáteis foram colocados na mesma VLAN
@@ -22,13 +21,17 @@ final.
 **No Portátil 1** (`.2`):
 netsh interface ip set address name="Ethernet" static 10.0.0.2 255.255.255.0
 
+
+
 **No Portátil 2** (`.3`):
 netsh interface ip set address name="Ethernet" static 10.0.0.3 255.255.255.0
 
 
-A única diferença entre os comandos é o endereço IP atribuído
-(`10.0.0.2` no Portátil 1, `10.0.0.3` no Portátil 2) e o facto de cada
-um ter sido executado na sua própria máquina.
+
+A única diferença entre os dois comandos é o endereço IP atribuído
+(`10.0.0.2` no Portátil 1, `10.0.0.3` no Portátil 2), e o facto de cada
+um ter sido executado na sua própria máquina — não são dois comandos
+seguidos no mesmo computador.
 
 ### IPs configurados
 
@@ -43,13 +46,19 @@ um ter sido executado na sua própria máquina.
 ## Preparação da partilha de ficheiros
 
 Para testar a comunicação entre os dois portáteis, foi criada uma pasta
-partilhada no Portátil 1, com um utilizador dedicado (`smbtest`),
-autenticado por password.
+chamada `testevlans` no Portátil 1 (criada manualmente pelo Explorador
+de Ficheiros).
 
-Comandos usados no Portátil 1 (CMD como Administrador):
-mkdir C:\testevlans
+Para permitir o acesso autenticado a partir do Portátil 2, foi criado um
+utilizador dedicado (`smbtest`) através do seguinte comando (CMD como
+Administrador no Portátil 1):
 net user smbtest Teste123 /add
-net share testevlans=C:\testevlans /grant:smbtest,FULL
+
+
+
+A pasta foi depois partilhada através do Explorador de Ficheiros
+(Propriedades → Partilha Avançada), com permissão de leitura/escrita
+atribuída ao utilizador `smbtest`.
 
 **Pasta criada:**
 
@@ -62,7 +71,8 @@ net share testevlans=C:\testevlans /grant:smbtest,FULL
 ## Testes de acesso a partir do Portátil 2
 
 A partir do Portátil 2, foi testado o acesso às partilhas do Portátil 1
-através do Explorador de Ficheiros (nota que já havia uma pasta criada anteriormente para teste, chamada partilha)
+através do Explorador de Ficheiros. Nota que já havia uma pasta
+partilhada anteriormente para testes, chamada `partilha`.
 
 ![Acesso à partilha antiga](06-acesso-partilha-antiga.png)
 
