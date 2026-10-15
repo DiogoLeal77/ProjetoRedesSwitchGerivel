@@ -62,9 +62,7 @@ net share testevlans=C:\testevlans /grant:smbtest,FULL
 ## Testes de acesso a partir do Portátil 2
 
 A partir do Portátil 2, foi testado o acesso às partilhas do Portátil 1
-através do Explorador de Ficheiros.
-
-**Acesso à partilha anterior (`partilha`):**
+através do Explorador de Ficheiros (nota que já havia uma pasta criada anteriormente para teste, chamada partilha)
 
 ![Acesso à partilha antiga](06-acesso-partilha-antiga.png)
 
