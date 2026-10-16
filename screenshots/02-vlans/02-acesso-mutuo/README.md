@@ -13,8 +13,87 @@ Ambas as portas na mesma VLAN:
 
 ## Atribuição dos IPs fixos
 
-Os IPs foram atribuídos via linha de comando (CMD como Administrador),
-para que ambos os portáteis ficassem na mesma sub-rede (`10.0.0.0/24`):
- 
+Cada portátil recebeu um IP fixo na mesma sub-rede (`10.0.0.0/24`), para
+que a comunicação entre eles não dependesse de DHCP (que não existe
+nesta VLAN isolada). O comando é o mesmo, mudando apenas o endereço IP
+final.
+
+**No Portátil 1** (`.2`):
+netsh interface ip set address name="Ethernet" static 10.0.0.2 255.255.255.0
 
 
+
+**No Portátil 2** (`.3`):
+netsh interface ip set address name="Ethernet" static 10.0.0.3 255.255.255.0
+
+
+
+A única diferença entre os dois comandos é o endereço IP atribuído
+(`10.0.0.2` no Portátil 1, `10.0.0.3` no Portátil 2), e o facto de cada
+um ter sido executado na sua própria máquina — não são dois comandos
+seguidos no mesmo computador.
+
+### IPs configurados
+
+**Portátil 1** (`10.0.0.2`):
+
+![IP do Portátil 1](01-ipconfig-p1.png)
+
+**Portátil 2** (`10.0.0.3`):
+
+![IP do Portátil 2](02-ipconfig-p2.png)
+
+## Preparação da partilha de ficheiros
+
+Para testar a comunicação entre os dois portáteis, foi criada uma pasta
+chamada `testevlans` no Portátil 1 (criada manualmente pelo Explorador
+de Ficheiros).
+
+Para permitir o acesso autenticado a partir do Portátil 2, foi criado um
+utilizador dedicado (`smbtest`) através do seguinte comando (CMD como
+Administrador no Portátil 1):
+net user smbtest Teste123 /add
+
+
+
+A pasta foi depois partilhada através do Explorador de Ficheiros
+(Propriedades → Partilha Avançada), com permissão de leitura/escrita
+atribuída ao utilizador `smbtest`.
+
+**Pasta criada:**
+
+![Pasta criada](04-pasta-criada.png)
+
+**Permissões atribuídas ao utilizador `smbtest`:**
+
+![Permissões smbtest](05-permissoes-smbtest.png)
+
+## Testes de acesso a partir do Portátil 2
+
+A partir do Portátil 2, foi testado o acesso às partilhas do Portátil 1
+através do Explorador de Ficheiros. Nota que já havia uma pasta
+partilhada anteriormente para testes, chamada `partilha`.
+
+![Acesso à partilha antiga](06-acesso-partilha-antiga.png)
+
+**Criação de uma pasta `info` dentro da partilha `testevlans`, a partir
+do Portátil 2:**
+
+![Pasta info criada](08-pasta-info-criada.png)
+
+**Confirmação no Portátil 1 — a pasta `info` criada remotamente está
+visível localmente:**
+
+![P1 vê a pasta info](09-p1-ver-pasta-info.png)
+
+## Resultado
+
+- ✅ Os dois portáteis, na mesma VLAN, comunicam entre si
+- ✅ A partilha de ficheiros via SMB funciona entre eles
+- ✅ Ficheiros e pastas criados remotamente aparecem no outro portátil
+- ✅ Não é necessária internet nem router para esta comunicação
+- ✅ O isolamento da VLAN mantém-se face ao resto da rede (VLAN 1)
+
+Isto demonstra que uma VLAN, apesar de isolar os dispositivos do resto da
+rede, mantém a comunicação interna totalmente funcional — exatamente o
+comportamento pretendido em ambientes segmentados.
