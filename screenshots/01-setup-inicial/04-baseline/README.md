@@ -21,7 +21,7 @@ segmentação ativa.
 
 **PC 1:**
 
-
+![ipconfig PC 1](06-ipconfig-pc1.png)
 
 **PC 2:**
 
