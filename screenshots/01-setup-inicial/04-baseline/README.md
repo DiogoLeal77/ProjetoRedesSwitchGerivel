@@ -7,8 +7,8 @@ mirroring, QoS) vão ser comparados.
 
 ## Varredura da rede
 
-O Advanced IP Scanner confirma que os dois PCs de teste — `.113` e `.163`
-— estão vivos e alcançáveis na mesma rede.
+O Advanced IP Scanner confirma que os dois PCs de teste estão vivos e
+alcançáveis na mesma rede.
 
 ![Scanner de rede](05-scanner-rede.png)
 
