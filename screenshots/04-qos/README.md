@@ -22,8 +22,11 @@ Todas as portas estão na Queue 1 (peso 2). O switch divide a largura de banda d
 *   **PC .138:** 48.0 Mbits/sec
 *(Divisão de 50% / 50%).*
 
-* [Ver print do resultado do .163](02-antes-163.png)
-* [Ver print do resultado do .138](03-antes-138.png)
+**Print do resultado do .163:**
+![Resultado antes 163](02-antes-163.png)
+
+**Print do resultado do .138:**
+![Resultado antes 138](03-antes-138.png)
 
 ---
 
@@ -38,8 +41,11 @@ A porta do .163 foi colocada na Queue 3 (peso 8) e a porta do .138 manteve-se na
 *   **PC .138:** 19.1 Mbits/sec
 *(Divisão de 80% / 20%, exatamente como a fórmula do switch prevê).*
 
-* [Ver print do resultado do .163](05-depois-163.png)
-* [Ver print do resultado do .138](06-depois-138.png)
+**Print do resultado do .163:**
+![Resultado depois 163](05-depois-163.png)
+
+**Print do resultado do .138:**
+![Resultado depois 138](06-depois-138.png)
 
 ---
 
@@ -53,8 +59,11 @@ Para provar que o switch respeita os limites, a porta do .138 foi descida para a
 *   **PC .163:** 82.5 Mbits/sec (Aproximou-se dos 89% teóricos)
 *   **PC .138:** 10.6 Mbits/sec (Caiu para os 11% teóricos)
 
-* [Ver print do resultado do .163](08-final-163.png)
-* [Ver print do resultado do .138](09-final-138.png)
+**Print do resultado do .163:**
+![Resultado final 163](08-final-163.png)
+
+**Print do resultado do .138:**
+![Resultado final 138](09-final-138.png)
 
 ---
 
