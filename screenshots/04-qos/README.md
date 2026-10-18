@@ -49,24 +49,6 @@ A porta do .163 foi colocada na Queue 3 (peso 8) e a porta do .138 manteve-se na
 
 ---
 
-## Teste 3: Com QoS (Peso 8 vs Peso 1) - Extremo
-
-Para provar que o switch respeita os limites, a porta do .138 foi descida para a Queue 0 (peso 1). A diferença entre as filas torna-se ainda mais brutal.
-
-![Configuração QoS 8vs1](07-qos-8vs1.png)
-
-**Resultados do iperf3:**
-*   **PC .163:** 82.5 Mbits/sec (Aproximou-se dos 89% teóricos)
-*   **PC .138:** 10.6 Mbits/sec (Caiu para os 11% teóricos)
-
-**Print do resultado do .163:**
-![Resultado final 163](08-final-163.png)
-
-**Print do resultado do .138:**
-![Resultado final 138](09-final-138.png)
-
----
-
 ## Conclusão
 
 A configuração do QoS no switch gerível está comprovada. Ao alterar as filas (Queues), o switch alterou a distribuição da largura de banda de forma proporcional aos pesos configurados. O limite total da rede manteve-se, mas a fatia de cada PC mudou drasticamente, provando que a prioridade de tráfego está a funcionar.
