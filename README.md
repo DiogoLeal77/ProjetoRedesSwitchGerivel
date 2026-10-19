@@ -4,40 +4,26 @@ Projeto pessoal de redes e virtualização — switch gerível Zyxel GS1200-5 + 
 
 ## A ideia do projeto
 
-A rede doméstica original é composta por dois switches não-geríveis. Isto
-significa que todos os dispositivos partilham a mesma rede e não existe
-qualquer controlo sobre o tráfego: não há segmentação, não há priorização,
-não há visibilidade.
+A rede doméstica original é composta por dois switches não-geríveis. Isto significa que todos os dispositivos partilham a mesma rede e não existe qualquer controlo sobre o tráfego: não há segmentação, não há priorização, não há visibilidade.
 
-Um switch não-gerível faz o básico — liga dispositivos entre si, e pronto.
-Toda a lógica que existe por trás de uma rede empresarial — VLANs,
-espelhamento de tráfego, priorização, agregação de ligações — fica escondida
-atrás de equipamento que não tem interface de gestão. Não se aprende a
-configurar aquilo que não se pode configurar.
+Um switch não-gerível faz o básico — liga dispositivos entre si, e pronto. Toda a lógica que existe por trás de uma rede empresarial — VLANs, espelhamento de tráfego, priorização, agregação de ligações — fica escondida atrás de equipamento que não tem interface de gestão. Não se aprende a configurar aquilo que não se pode configurar.
 
-Este projeto introduz um **switch gerível (Zyxel GS1200-5)** na rede, não
-para substituir os switches existentes, mas para **criar um segmento
-controlado** onde seja possível experimentar, medir e documentar aquilo que
-uma rede gerível permite fazer e uma rede doméstica comum não permite.
+Este projeto introduz um **switch gerível (Zyxel GS1200-5)** na rede, não para substituir os switches existentes, mas para **criar um segmento controlado** onde seja possível experimentar, medir e documentar aquilo que uma rede gerível permite fazer e uma rede doméstica comum não permite.
 
-## O que se vai fazer
+## O que foi feito (Fase 1 — Switch Gerível)
 
-O projeto está dividido em duas fases.
+O projeto cobriu as seguintes funcionalidades e testes:
 
-### Fase 1 — Switch gerível
+- **Acesso à interface web:** Configuração inicial e atribuição de um IP de gestão fixo.
+- **Baseline:** Teste de conectividade base antes de qualquer alteração (ping, Advanced IP Scanner, Zenmap).
+- **VLANs:** Criação de VLANs 10 e 20, isolamento de portas e confirmação de comunicação cruzada.
+- **Port Mirroring:** Captura de tráfego de uma porta para outra, analisada com o Wireshark (ping e DNS).
+- **QoS (Prioridade):** Atribuição de filas de prioridade (Queue 0 a 3) e prova prática do efeito do QoS com o `iperf3` e congestionamento controlado.
+- **Rate Limit:** Aplicação de limites de largura de banda (extra).
+- **IGMP Snooping:** Controlo de tráfego multicast com e sem snooping, provando a entrega seletiva (usando `iperf 2`).
+- **Link Aggregation:** (Não realizado — limitação de hardware).
 
-Introduzir o switch gerível na rede e testar as funcionalidades que o
-distinguem de um switch não-gerível:
-
-- Acesso à interface web de gestão e configuração inicial
-- Teste de conectividade base (ponto de referência antes de qualquer alteração)
-- Segmentação com VLANs — isolar dispositivos na mesma rede física
-- Port mirroring — duplicar tráfego para análise com Wireshark
-- QoS — priorizar ou limitar largura de banda por porta
-- Link aggregation (opcional) — agregar duas ligações numa só
-- IGMP snooping (opcional) — controlar tráfego multicast
-
-### Fase 2 — Servidor virtualizado
+## O que se vai fazer (Fase 2 — Servidor virtualizado)
 
 Correr uma máquina virtual Ubuntu Server num PC, com Docker a alojar três
 serviços de rede, acessíveis a partir de qualquer ponto da rede:
@@ -48,9 +34,16 @@ serviços de rede, acessíveis a partir de qualquer ponto da rede:
 
 ## O que este projeto demonstra
 
-- Configuração de switch gerível (VLANs, mirroring, QoS, LAG, IGMP)
-- Análise de tráfego com Wireshark
-- Medição de débito com iperf3
+- Configuração de switch gerível (VLANs, mirroring, QoS, IGMP snooping)
+- Análise de tráfego e protocolos com Wireshark (ICMP, DNS, IGMP)
+- Medição de throughput e congestionamento com `iperf3` e `iperf 2`
+- Testes de conectividade (Advanced IP Scanner, Zenmap)
 - Virtualização com VirtualBox
-- Serviços em Docker
-- Documentação técnica e histórico de progresso versionado
+- Serviços em Docker (phpIPAM, NetBox, Zabbix)
+- Documentação técnica e histórico de progresso versionado no Git
+
+## Ferramentas Usadas
+
+- **Rede:** Zyxel GS1200-5, cabos Ethernet, Wireshark, Advanced IP Scanner, Zenmap, iperf 2, iperf3.
+- **Servidores:** VirtualBox, Ubuntu Server, Docker, PuTTY (SSH).
+- **Serviços:** phpIPAM, NetBox, Zabbix.
