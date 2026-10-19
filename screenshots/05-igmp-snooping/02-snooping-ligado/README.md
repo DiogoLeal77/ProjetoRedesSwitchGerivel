@@ -23,7 +23,7 @@ Se olharmos para a coluna do tempo (Time) no Wireshark do A, vemos que ele estav
 ## O Recetor (Portátil B .164)
 O Portátil B correu o comando no CMD e juntou-se ao grupo.
 
-![CMD do B](03-cmd-164-recebe.png)
+![CMD do B](03-cmd-163-recebe.png)
 
 Como o B pediu o grupo, o switch entregou-lhe o tráfego. O Wireshark do B continua a receber os pacotes.
 
