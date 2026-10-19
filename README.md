@@ -19,14 +19,14 @@ O projeto cobriu as seguintes funcionalidades e testes:
 - **VLANs:** Criação de VLANs 10 e 20, isolamento de portas e confirmação de comunicação cruzada.
 - **Port Mirroring:** Captura de tráfego de uma porta para outra, analisada com o Wireshark (ping e DNS).
 - **QoS (Prioridade):** Atribuição de filas de prioridade (Queue 0 a 3) e prova prática do efeito do QoS com o `iperf3` e congestionamento controlado.
-- **Rate Limit:** Aplicação de limites de largura de banda (extra).
 - **IGMP Snooping:** Controlo de tráfego multicast com e sem snooping, provando a entrega seletiva (usando `iperf 2`).
-- **Link Aggregation:** (Não realizado — limitação de hardware).
+
+### Funcionalidades por implementar (Trabalho Futuro)
+- **Rate Limit (Limitação de Largura de Banda):** O hardware atual não possui esta funcionalidade nativa na interface gráfica. Fica registado como trabalho futuro para exploração, juntamente com a **Link Aggregation** (que requer hardware com múltiplas portas de rede).
 
 ## O que se vai fazer (Fase 2 — Servidor virtualizado)
 
-Correr uma máquina virtual Ubuntu Server num PC, com Docker a alojar três
-serviços de rede, acessíveis a partir de qualquer ponto da rede:
+Correr uma máquina virtual Ubuntu Server num PC, com Docker a alojar três serviços de rede, acessíveis a partir de qualquer ponto da rede:
 
 - **phpIPAM** — gestão de endereçamentos IP's
 - **NetBox** — documentação da infraestrutura de rede
