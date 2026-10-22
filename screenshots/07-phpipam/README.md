@@ -1,64 +1,92 @@
 # phpIPAM (Gestão de IPs)
 
-O phpIPAM é uma aplicação web de código aberto para gestão de endereçamento IP (IPAM). Permite documentar sub-redes, endereços IP e dispositivos da rede, evitando conflitos.
+O phpIPAM é uma aplicação web de código aberto para gestão de endereçamento IP (IPAM - IP Address Management). Permite documentar sub-redes, endereços IP utilizados e dispositivos da rede, evitando conflitos de IPs e facilitando a gestão da infraestrutura.
 
 A aplicação foi instalada no servidor virtualizado (Ubuntu Server) através do Docker, utilizando o Docker Compose para orquestrar dois containers: um para a aplicação web e outro para a base de dados (MariaDB).
 
-## Acesso ao Servidor e SSH (PuTTY)
+## Acesso ao Servidor (SSH via PuTTY)
+A instalação foi feita remotamente a partir do PC Fixo, usando o PuTTY para aceder ao terminal do Ubuntu Server através de SSH.
 
-A instalação foi feita remotamente a partir do PC Fixo, usando o PuTTY para aceder ao terminal do Ubuntu Server por SSH.
-
-Configuração do PuTTY:
 ![PuTTY Config](01-putty-config.png)
-
-Sessão SSH ligada com sucesso:
 ![PuTTY Login](02-putty-login.png)
 
-## A Lógica do Docker e do Docker Compose
+## Criação do Docker e Docker Compose
 
-Em vez de instalar o phpIPAM e a base de dados diretamente no Ubuntu (o que poderia gerar conflitos de versões), usámos o Docker. 
+### Porquê o Docker?
+Em vez de instalar o phpIPAM e a base de dados diretamente no Ubuntu (o que poderia gerar conflitos de versões e dependências), optou-se pelo Docker. O Docker permite empacotar cada aplicação com todas as suas dependências num "container" isolado. O Docker Compose é a ferramenta que lê um ficheiro de configuração e levanta vários containers ao mesmo tempo, ligando-os automaticamente numa rede virtual privada.
 
-O Docker permite empacotar a aplicação e todas as suas dependências num "container" isolado. O Docker Compose é a ferramenta que lê o ficheiro de configuração e levanta os dois containers ao mesmo tempo, ligando-os numa rede virtual privada.
+### Comandos de Instalação
+Os comandos abaixo foram executados no terminal do Ubuntu (via SSH). O primeiro atualiza o sistema; o segundo instala o Docker, o Git e o plugin do Docker Compose; o terceiro ativa o serviço do Docker para arrancar com o sistema; e o quarto dá permissões ao utilizador para usar o Docker sem precisar de sudo.
 
-Para instalar o motor do Docker e o Docker Compose, foram executados os seguintes comandos:
-
+```bash
 sudo apt update && sudo apt upgrade -y
 sudo apt install -y docker.io docker-compose-v2 git
 sudo systemctl enable --now docker
 sudo usermod -aG docker $USER
 
-## Configuração e Comandos do Serviço
+Configuração do Container (docker-compose.yml)
+O ficheiro docker-compose.yml foi criado na pasta ~/homelab/phpipam. Este ficheiro define a arquitetura do serviço, especificando as imagens, as portas, as variáveis de ambiente e os volumes de persistência.
+services:
+  phpipam-db:
+    image: mariadb:10.11
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+    volumes:
+      - phpipam_db_data:/var/lib/mysql
+    restart: unless-stopped
 
-O ficheiro docker-compose.yml foi criado na pasta ~/homelab/phpipam. As diretivas mais importantes deste ficheiro são:
+  phpipam-web:
+    image: phpipam/phpipam-www:1.6
+    ports:
+      - "8081:80"
+    environment:
+      TZ: Europe/Lisbon
+      IPAM_DATABASE_HOST: phpipam-db
+      IPAM_DATABASE_USER: phpipam
+      IPAM_DATABASE_PASS: phpipampass
+      IPAM_DATABASE_NAME: phpipam
+    depends_on:
+      - phpipam-db
+    restart: unless-stopped
 
-- image: Define a imagem oficial do phpIPAM e do MariaDB.
-- ports: "8081:80": Mapeia a porta 80 do container para a porta 8081 do servidor. É por isso que acedemos no browser através do IP do servidor e da porta 8081.
-- volumes: Garante que os dados da base de dados são guardados num disco virtual, sobrevivendo mesmo que o container seja reiniciado.
-- depends_on: Garante que a base de dados arranca primeiro do que a aplicação web.
+volumes:
+  phpipam_db_data:
 
-Para arrancar e verificar o estado dos containers, foram usados estes comandos:
+Utilidade de cada bloco:
+phpipam-db: Define o container da base de dados usando a imagem oficial do MariaDB. A diretiva volumes garante que os dados não são perdidos se o container for reiniciado.
 
+phpipam-web: Define o container da aplicação web. A diretiva ports: "8081:80" mapeia a porta 80 interna do container para a porta 8081 do servidor virtualizado, permitindo o acesso a partir do browser do PC Fixo. A diretiva depends_on garante que a base de dados arranca antes da aplicação web.
+
+volumes: Declara o volume para o Docker saber onde guardar os dados de forma persistente.
+
+Arranque e Gestão dos Serviços
+Para arrancar os containers em segundo plano, foi utilizado o comando docker compose up -d. Para verificar o estado dos containers e confirmar que estavam a correr, foi utilizado o comando docker compose ps.
+
+bash
 cd ~/homelab/phpipam
 docker compose up -d
 docker compose ps
 
-## Evidências da Instalação
+(Durante o arranque, o Docker descarregou as imagens do MariaDB e do phpIPAM e criou a rede virtual entre eles).
 
-1. Ecrã de boas-vindas do instalador:
-![Bem-vindo](03-phpipam-bem-vindo.png)
+Evidências da Instalação
+O processo de instalação foi feito através do browser no PC Fixo, acedendo a http://192.168.1.169:8081.
 
-2. Escolha do tipo de instalação da base de dados:
-![Tipo de BD](04-phpipam-tipo-bd.png)
+Ecrã de boas-vindas do instalador:
+https://03-phpipam-bem-vindo.png/
 
-3. Base de dados instalada com sucesso:
-![BD Instalada](05-phpipam-bd-instalada.png)
+Escolha do tipo de instalação da base de dados:
+https://04-phpipam-tipo-bd.png/
 
-4. Configuração pós-instalação (password e URL):
-![Pós-instalação](06-phpipam-postinstall.png)
+Base de dados instalada com sucesso:
+https://05-phpipam-bd-instalada.png/
 
-5. Dashboard final do phpIPAM (acessível via browser):
-![Dashboard](07-phpipam-dashboard.png)
+Configuração pós-instalação (password e URL):
+https://06-phpipam-postinstall.png/
 
-## Conclusão
+Dashboard final do phpIPAM:
+https://07-phpipam-dashboard.png/
 
-O phpIPAM está acessível em http://192.168.1.169:8081 e o dashboard confirma a instalação bem-sucedida.
+
+Conclusão
+O phpIPAM está acessível em http://192.168.1.169:8081 e o dashboard confirma a instalação bem-sucedida. A utilização do Docker Compose simplificou o processo, permitindo levantar a aplicação e a base de dados com um único comando e garantindo o isolamento e a persistência dos dados.
