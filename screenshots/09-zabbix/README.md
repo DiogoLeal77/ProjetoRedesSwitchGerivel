@@ -43,7 +43,6 @@ A comunicação entre a VM e o Agente do Windows foi testada e validada com suce
 Para além do PC Fixo, foram configurados no Zabbix dois dispositivos domésticos:
 
 * Robo-Limpeza (192.168.1.130)
-* Maquina-Lavar (192.168.1.172)
 
 Como estes dispositivos não correm Windows nem Linux, não é possível instalar o Agente. A monitorização é feita através do template "Template Module ICMP Ping", que verifica se eles estão ligados à rede.
 
@@ -53,7 +52,7 @@ Como estes dispositivos não correm Windows nem Linux, não é possível instala
 
    ![Dashboard do Zabbix](01-zabbix-dashboard.png)
 
-2. Lista de Hosts monitorizados (PC Fixo, Robô e Máquina de Lavar):
+2. Lista de Hosts monitorizados (PC Fixo):
 
    ![Hosts do Zabbix](02-zabbix-hosts.png)
 
