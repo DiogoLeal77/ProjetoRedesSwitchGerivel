@@ -1,6 +1,6 @@
 # Gestão de Utilizadores (Simulação de Operadores)
 
-O objetivo foi simular dois operadores diferentes a aceder à infraestrutura de rede. Para isso, foram criados dois utilizadores novos (`karser1993` e `karser199377`) para serem usados nos dois portáteis, em cada uma das aplicações (Zabbix e NetBox).
+O objetivo foi simular dois operadores diferentes a aceder à infraestrutura de rede. Para isso, foram criados dois utilizadores novos para serem usados nos dois portáteis, em cada uma das aplicações (Zabbix, NetBox e PHPipam).
 
 ## O Intuito das Roles (Privilégios)
 
