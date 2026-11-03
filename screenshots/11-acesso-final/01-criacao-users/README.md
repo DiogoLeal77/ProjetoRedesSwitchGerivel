@@ -9,11 +9,10 @@ Os prints abaixo mostram os menus de criação de utilizadores em cada um dos se
 **Zabbix: Menu de criação de utilizador:**
 ![Criar utilizador Zabbix](04-zabbix-user.png)
 
-**Zabbix: Menu de permissões:**
-![Permissões Zabbix](01-zabbix-role.png)
-
 **NetBox: Menu de criação de utilizador:**
 ![Criar utilizador NetBox](02-netbox-user.png)
+
+
 
 **phpIPAM: Menu de criação de utilizador:**
 ![Criar utilizador phpIPAM](03-phpipam-user.png)
