@@ -16,7 +16,7 @@ O intuito de definir roles diferentes foi aplicar o Princípio do Menor Privilé
 **NetBox: Criação do utilizador sem superuser:**
 ![Criar utilizador NetBox](02-netbox-user.png)
 
-**phpIPAM: Criação do utilizador com permissões de administrador:**
+**phpIPAM: Criação do utilizador**
 ![Criar utilizador phpIPAM](03-phpipam-user.png)
 
 ## Conclusão
