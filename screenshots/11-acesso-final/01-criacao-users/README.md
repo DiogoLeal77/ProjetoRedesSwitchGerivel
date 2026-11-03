@@ -15,9 +15,6 @@ O intuito de definir roles diferentes foi aplicar o Princípio do Menor Privilé
 **Zabbix: Criação do utilizador:**
 ![Criar utilizador Zabbix](04-zabbix-user.png)
 
-**Zabbix: Atribuição da Role de User:**
-![Permissões Zabbix](01-zabbix-role.png)
-
 **NetBox: Criação do utilizador sem superuser:**
 ![Criar utilizador NetBox](02-netbox-user.png)
 
