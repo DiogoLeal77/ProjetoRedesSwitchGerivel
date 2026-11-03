@@ -1,6 +1,6 @@
 # Gestão de Utilizadores
 
-Foram criadas duas contas de utilizador reais para os dois portáteis (`karser1993` e `karser199377`), com o objetivo de permitir o acesso à infraestrutura de rede a partir de dispositivos diferentes.
+Foram criadas duas contas de utilizador reais para os dois portáteis  com o objetivo de permitir o acesso à infraestrutura de rede a partir de dispositivos diferentes.
 
 Os prints abaixo mostram os menus de criação de utilizadores em cada um dos serviços (Zabbix, NetBox e phpIPAM).
 
