@@ -10,10 +10,6 @@ O intuito de definir roles diferentes foi aplicar o Princípio do Menor Privilé
 *   **NetBox:** O utilizador foi criado com o "Status de superuser" desmarcado. O intuito é permitir a consulta e documentação, mas evitar que apaguem dados críticos da base de dados.
 
 ## Evidências
-
-**Zabbix: Atribuição da Role de User:**
-![Permissões Zabbix](01-zabbix-role.png)
-
 **Zabbix: Criação do utilizador:**
 ![Criar utilizador Zabbix](04-zabbix-user.png)
 
